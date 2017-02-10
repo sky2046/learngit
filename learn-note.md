@@ -1,14 +1,24 @@
-# git learning
+# 学习笔记 — 廖雪峰 Git教程
+
+本文是学习廖雪峰 Git教程 的笔记
+
+教程链接：http://www.liaoxuefeng.com/
+
+第一次接触 Git，接触 GitHub，廖雪峰老师教程简答明了，清晰的介绍了 Git 的基本知识点和常用操作。学习后，我对 Git 有了初步的认识，并构建了本地仓库和 GitHub 远程仓库，包括本篇学习笔记的记录和更新，也应用到了教程中提到的 Git 知识点，存放在 GitHub 的 learngit 仓库里。以后还可以把新学习到的 Git 知识继续记录在这个仓库里。
+
+收获很多，感谢作者编写这么好的教程。
 
 ## git 的安装
 
 Debian 或 Ubuntu
+
 sudo apt-get install git
 
 Windows
 msysgit是Windows版的Git，http://msysgit.github.io/
 
 安装完成后，还需要最后一步设置。
+
 * git config --global user.email "liugenxian2015@gmail.com"
 * git config --global user.name "liugenxian"
 
@@ -17,8 +27,8 @@ msysgit是Windows版的Git，http://msysgit.github.io/
 首先创建一个空目录
 
 $ mkdir learngit  
-$ cd learngit  
-$ pwd  
+
+$ cd learngit    
 
 初始化一个Git仓库
 
@@ -72,7 +82,9 @@ git reset HEAD readme.txt
 > git reset 命令既可以回退版本，也可以把暂存区的修改回退到工作区。用HEAD表示最新的版本。
 
 场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令 git checkout -- file。
+
 场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区，想丢弃修改，分两步，第一步用命令 git reset HEAD file, 就回到了场景1，第二步按场景1操作。
+
 场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退，不过前提是没有推送到远程库。
 
 ## 删除文件
@@ -80,34 +92,41 @@ git reset HEAD readme.txt
 删除也是一个修改操作。
 
 git add test.txt
+
 git commit -m "add test.txt"
 
 rm test.txt
 
 如果确实要从版本库中删除文件，命令 git rm test.txt
+
 如果是删错了，版本库还有，可以恢复。命令 git checkout -- test.txt 只能恢复文件到最新版本，会丢失最近一次提交后你修改的内容。
 
 ## 远程仓库
 
 Git 是分布式版本控制系统，同一个Git 仓库，可以分布到不同的机器上。
+
 GitHub，提供Git仓库托管服务的网站。注册GitHub账户。
 
 SSH key
 > Using the SSH protocol, you can connect and authenticate to remote servers and services. With SSH keys, you can connect to GitHub without supplying your username or password at each visit.
+
 > SSH keys serve as a means of identifying yourself to an SSH server using public-key cryptography and challenge-response authentication.
 
 第1步：创建 SSH Key
+
 ssh-keygen -t rsa -C "liugenxian2015@gmail.com"
+
 第2步：登陆GitHub，Add SSH Key
 
 ## 添加远程库
 
-git remote add origin git@github.com:sky2046/learngit.git
-git push -u origin master
-
 * 要关联一个远程库，使用命令 git remote add origin git@server-name:path/repo-name.git
 * 关联后，使用命令 git push -u origin master 第一次推送master分支的所有内容
 * 此后，每次本地提交后，只要有必要，就可以使用命令 git push origin master 推送最新修改。
+
+> git remote add origin git@github.com:sky2046/learngit.git
+
+> git push -u origin master
 
 分布式版本系统的最大好处之一是在本地工作完全不需要考虑远程库的存在，没有联网也可以正常工作。
 
@@ -125,22 +144,20 @@ Git 支持多种协议，默认的 git:// 使用SSH(速度更快)，但也可以
 
 创建一个属于自己的分支，别人看不到，你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。
 
-## 创建与合并分支
-
-每次提交，Git 都把它们串成一条时间线，这条时间线就是一个分支。
+创建与合并分支。每次提交，Git 都把它们串成一条时间线，这条时间线就是一个分支。
 刚开始，只有一条时间线，这个分支叫主分支(master分支)，Git用master指向最新的提交，再用HEAD指向master，就能确定当前分支，以及当前分支的提交点。
 
 每次提交，master 分支都会向前移动一步，随着你不断提交，master分支的线也越来越长。
-当我们创建新的分支，比如dev时，Git 新建了一个指针叫dev，指向master相同的提交，再把HEAD指向dev，就表示当前分支在dev上。从现在开始，对工作区的修改和提交就是针对dev分支了，比如新提交一次后，dev指针往前移动一步，而master指针不变。
+当我们创建新的分支，比如dev时，Git 新建了一个指针叫 dev，指向 master 相同的提交，再把 HEAD指向 dev，就表示当前分支在dev上。从现在开始，对工作区的修改和提交就是针对 dev 分支了，比如新提交一次后，dev 指针往前移动一步，而 master 指针不变。
 
-怎么合并？比如dev上的工作完成了，就可以把dev合并到master上，最简单的方法，就是直接把master指向dev的当前提交。
+怎么合并？比如 dev 上的工作完成了，就可以把 dev 合并到 master 上，最简单的方法，就是直接把 master 指向dev的当前提交。
 
-合并完后，甚至可以删除dev分支，删除dev分支，就是把dev指针给删掉。
+合并完后，甚至可以删除 dev 分支，删除 dev 分支，就是把 dev 指针给删掉。
 
 Git 鼓励大量使用分支：
-* 查看分支：git branch
-* 创建分支：git branch name
-* 切换分支：git checkout name
+* 查看分支： git branch
+* 创建分支： git branch name
+* 切换分支： git checkout name
 * 创建+切换分支： git checkout -b name
 * 合并某分支到当前分支： git merge name
 * 删除分支： git branch -d name
@@ -148,11 +165,13 @@ Git 鼓励大量使用分支：
 ## 解决冲突
 
 准备新的feature1分支，如果master分支和feature1分支各自都有新的提交，这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就有可能产生冲突。
+
 冲突产生了，必须手动解决冲突后再提交，才能合并。
 
 Git 用<<<<<<<,=======,>>>>>>> 标记不同分支的内容。
 
 用带参数的git log命令可以看到分支的合并情况。
+
 ```
 $ git log --graph --pretty=oneline --abbrev-commit
 *   d164f39 conflict fixed
@@ -171,19 +190,20 @@ $ git log --graph --pretty=oneline --abbrev-commit
 ```
 
 当Git无法自动合并分支时，必须首先解决冲突，解决冲突后，再提交，再合并。
+
 用git log --graph 命令可以看到分支合并图。
 
 ## 分支管理策略
 
-基本原则：首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活。每个人都在dev分支上干活，每个人都有自己的分支，时不时往dev上合并，在关键节点，会往master上合并。
+基本原则：首先，master 分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活。每个人都在 dev 分支上干活，每个人都有自己的分支，时不时往 dev 上合并，在关键节点，会往 master 上合并。
 
-合并分支时，加上--no-ff参数可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
+合并分支时，加上 --no-ff 参数可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而 fast forward 合并就看不出来曾经做过合并。
 
-## Bug分支
+## Bug 分支
 
-每个bug都可以通过一个新的临时分支来进行修复，修复完合并分支，然后把临时分支删除。
+每个 bug 都可以通过一个新的临时分支来进行修复，修复完合并分支，然后把临时分支删除。
 
-当手头工作没有完成时，先把工作现场 git stash一下，然后去修复bug，修复完后，再git stash pop，回到工作现场。
+当手头工作没有完成时，先把工作现场 git stash一下，然后去修复 bug，修复完后，再 git stash pop，回到工作现场。
 
 * 储藏工作场景 git stash
 * 创建临时分支，git checkout -b issue-101
@@ -195,6 +215,7 @@ $ git log --graph --pretty=oneline --abbrev-commit
 ## feature分支
 
 开发一个新feature，最好新建一个分支。
+
 如果要丢弃一个没有被合并过的分支，用命令 git branch -D name 强行删除。
 
 ## 多人协作
@@ -208,10 +229,11 @@ $ git log --graph --pretty=oneline --abbrev-commit
 
 ## 标签管理
 
-Git的标签是版本库的快照，是指向某个commit的指针。
-分支也是指向commit的指针，但分支可以移动，标签不能移动。
+Git的标签是版本库的快照，是指向某个 commit 的指针。
 
-* 命令 git tag name 用于新建一个标签，默认为HEAD，也可以指定commit id
+分支也是指向 commit 的指针，但分支可以移动，标签不能移动。
+
+* 命令 git tag name 用于新建一个标签，默认为HEAD，也可以指定 commit id
 * git -a tagname -m "info of tag" 可以指定标签信息
 * git -s tagname -m "info of tag" 可以用PGP签名标签
 * git tag 查看所有标签
@@ -223,14 +245,14 @@ Git的标签是版本库的快照，是指向某个commit的指针。
 
 ## 使用 GitHub
 
-* 在GitHub上，可以任意Fork开源仓库
-* 自己拥有Fork的仓库的读写权限
-* 可以推送pull request给官方仓库来贡献代码
+* 在 GitHub 上，可以任意 Fork 开源仓库
+* 自己拥有 Fork 的仓库的读写权限
+* 可以推送 pull request 给官方仓库来贡献代码
 
-## 自定义Git
+## 自定义 Git
 
 * 显示颜色 git config --global color.ui true
-* 忽略某些文件时，要编写.gitignore， .gitignore 文件本身要放到版本库里，可以对.gitignore做版本管理
+* 忽略某些文件时，要编写 .gitignore， .gitignore 文件本身要放到版本库里，可以对 .gitignore 做版本管理
 ```
 # Windows:
 Thumbs.db
