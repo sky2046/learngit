@@ -1,0 +1,1356 @@
+# log of git-bash (learngit repository)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit
+$ git init
+Initialized empty Git repository in D:/myBooks/Git/learngit/.git/
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git add readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git commit -m "wrote a readme file"
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: empty ident name (for <(null)>) not allowed
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git config --global user.email "liugenxian2015@gmail.com"
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git config --global user.name "liugenxian"
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git commit -m "wrote a readme file"
+[master (root-commit) 5b807d1] wrote a readme file
+ 1 file changed, 2 insertions(+)
+ create mode 100644 readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git diff readme.txt
+diff --git a/readme.txt b/readme.txt
+index d8036c1..013b5bc 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -1,2 +1,2 @@
+-Git is a version control system.
++Git is a distributed version control system.
+ Git is free software.
+\ No newline at end of file
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git add readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   readme.txt
+
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git commit -m "add distributed"
+[master 0ccfa0c] add distributed
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git diff
+diff --git a/readme.txt b/readme.txt
+index 013b5bc..99e0e11 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -1,2 +1,2 @@
+ Git is a distributed version control system.
+-Git is free software.
+\ No newline at end of file
++Git is free software distributed under the GPL.
+\ No newline at end of file
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git add readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git commit -m "append GPL"
+[master 2b69123] append GPL
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git log
+commit 2b69123ac271bb765024665065a49a6605670b6f
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Thu Feb 9 22:18:12 2017 +0800
+
+    append GPL
+
+commit 0ccfa0c7e3e1b49a8ab71958d4bcb629cfb61d84
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Thu Feb 9 22:08:21 2017 +0800
+
+    add distributed
+
+commit 5b807d1f245061034f0d8c9f3903c3a7ed92f101
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Thu Feb 9 21:55:29 2017 +0800
+
+    wrote a readme file
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git log --pretty==oneline
+fatal: invalid --pretty format: =oneline
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git reset --hard HEAD^
+HEAD is now at 0ccfa0c add distributed
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ cat readme.txt
+Git is a distributed version control system.
+Git is free software.
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git log
+commit 0ccfa0c7e3e1b49a8ab71958d4bcb629cfb61d84
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Thu Feb 9 22:08:21 2017 +0800
+
+    add distributed
+
+commit 5b807d1f245061034f0d8c9f3903c3a7ed92f101
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Thu Feb 9 21:55:29 2017 +0800
+
+    wrote a readme file
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git reset --hard 2b6912
+HEAD is now at 2b69123 append GPL
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git log
+commit 2b69123ac271bb765024665065a49a6605670b6f
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Thu Feb 9 22:18:12 2017 +0800
+
+    append GPL
+
+commit 0ccfa0c7e3e1b49a8ab71958d4bcb629cfb61d84
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Thu Feb 9 22:08:21 2017 +0800
+
+    add distributed
+
+commit 5b807d1f245061034f0d8c9f3903c3a7ed92f101
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Thu Feb 9 21:55:29 2017 +0800
+
+    wrote a readme file
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ cat readme.txt
+Git is a distributed version control system.
+Git is free software distributed under the GPL.
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git reflog
+2b69123 HEAD@{0}: reset: moving to 2b6912
+0ccfa0c HEAD@{1}: reset: moving to HEAD^
+2b69123 HEAD@{2}: commit: append GPL
+0ccfa0c HEAD@{3}: commit: add distributed
+5b807d1 HEAD@{4}: commit (initial): wrote a readme file
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        LICENSE.txt
+        learn-note.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        LICENSE
+        learn-note.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git diff
+diff --git a/readme.txt b/readme.txt
+index 99e0e11..cb62dc1 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -1,2 +1,3 @@
+ Git is a distributed version control system.
+-Git is free software distributed under the GPL.
+\ No newline at end of file
++Git is free software distributed under the GPL.
++Git has a mutable index called stage.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git add readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git add LICENSE
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   LICENSE
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git commit -m "understand how stage works"
+[master b4a2026] understand how stage works
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+ create mode 100644 LICENSE
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ cat readme.txt
+Git is a distributed version control system.
+Git is free software distributed under the GPL.
+Git has a mutable index called stage.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ cat readme.txt
+Git is a distributed version control system.
+Git is free software distributed under the GPL.
+Git has a mutable index called stage.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git add readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git commit -m "git tracks changes"
+[master dbdd52c] git tracks changes
+ 1 file changed, 1 insertion(+)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git diff HEAD -- readme.txt
+diff --git a/readme.txt b/readme.txt
+index 76d770f..a9c5755 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -1,4 +1,4 @@
+ Git is a distributed version control system.
+ Git is free software distributed under the GPL.
+ Git has a mutable index called stage.
+-Git tracks changes.
++Git tracks changes of files.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git add readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git commit -m "git tracks changes"
+[master 0bb9eb8] git tracks changes
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git checkout -- readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git add test.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git commit -m "add test.txt"
+[master 81fa19a] add test.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ rm test.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    test.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git checkout -- test.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ ssh-keygen -t rsa -C "liugenxian2015@gmail.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/Administrator/.ssh/id_rsa.
+Your public key has been saved in /c/Users/Administrator/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:SP3nf8q3nJSoRtkA/LdBf1LJE9Q7lmCZwJk9TvEnf9c liugenxian2015@gmail.com
+The key's randomart image is:
++---[RSA 2048]----+
+|        . ..=.*o+|
+|       . o + X.+o|
+|      . . o = =o=|
+|     . . . o +.O+|
+|      . S . * +.E|
+|           = o. +|
+|          . .. o |
+|           ..oo +|
+|          ..  +B.|
++----[SHA256]-----+
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git remote add origin git@github.com:sky2046/learngit.git
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git push -u origin master
+The authenticity of host 'github.com (192.30.253.112)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.253.112' (RSA) to the list of known hosts.
+Counting objects: 22, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (18/18), done.
+Writing objects: 100% (22/22), 1.80 KiB | 0 bytes/s, done.
+Total 22 (delta 5), reused 0 (delta 0)
+remote: Resolving deltas: 100% (5/5), done.
+To github.com:sky2046/learngit.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$
+
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git branch
+  dev
+* master
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ cat readme.txt
+Git is a distributed version control system.
+Git is free software distributed under the GPL.
+Git has a mutable index called stage.
+Git tracks changes of files.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git merge dev
+Updating 81fa19a..107c544
+Fast-forward
+ readme.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ cat readme.txt
+Git is a distributed version control system.
+Git is free software distributed under the GPL.
+Git has a mutable index called stage.
+Git tracks changes of files.
+Creating a new branch is quick.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git branch
+  dev
+* master
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git branch -d dev
+Deleted branch dev (was 107c544).
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git push origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 363 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
+To github.com:sky2046/learngit.git
+   81fa19a..107c544  master -> master
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git checkout -b feature1
+Switched to a new branch 'feature1'
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (feature1)
+$ git push origin feature1
+Total 0 (delta 0), reused 0 (delta 0)
+To github.com:sky2046/learngit.git
+ * [new branch]      feature1 -> feature1
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (feature1)
+$ git add readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (feature1)
+$ git commit -m
+error: switch `m' requires a value
+usage: git commit [<options>] [--] <pathspec>...
+
+    -q, --quiet           suppress summary after successful commit
+    -v, --verbose         show diff in commit message template
+
+Commit message options
+    -F, --file <file>     read message from file
+    --author <author>     override author for commit
+    --date <date>         override date for commit
+    -m, --message <message>
+                          commit message
+    -c, --reedit-message <commit>
+                          reuse and edit message from specified commit
+    -C, --reuse-message <commit>
+                          reuse message from specified commit
+    --fixup <commit>      use autosquash formatted message to fixup specified commit
+    --squash <commit>     use autosquash formatted message to squash specified commit
+    --reset-author        the commit is authored by me now (used with -C/-c/--amend)
+    -s, --signoff         add Signed-off-by:
+    -t, --template <file>
+                          use specified template file
+    -e, --edit            force edit of commit
+    --cleanup <default>   how to strip spaces and #comments from message
+    --status              include status in commit message template
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+
+Commit contents options
+    -a, --all             commit all changed files
+    -i, --include         add specified files to index for commit
+    --interactive         interactively add files
+    -p, --patch           interactively add changes
+    -o, --only            commit only specified files
+    -n, --no-verify       bypass pre-commit and commit-msg hooks
+    --dry-run             show what would be committed
+    --short               show status concisely
+    --branch              show branch information
+    --porcelain           machine-readable output
+    --long                show status in long format (default)
+    -z, --null            terminate entries with NUL
+    --amend               amend previous commit
+    --no-post-rewrite     bypass post-rewrite hook
+    -u, --untracked-files[=<mode>]
+                          show untracked files, optional modes: all, normal, no. (Default: all)
+
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (feature1)
+$ git commit -m "AND simple"
+[feature1 55c473d] AND simple
+ 1 file changed, 1 insertion(+)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (feature1)
+$ git status
+On branch feature1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (feature1)
+$ git push origin feature1
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 348 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
+To github.com:sky2046/learngit.git
+   107c544..55c473d  feature1 -> feature1
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (feature1)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git add readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git commit -m "& simple"
+[master f55615a] & simple
+ 1 file changed, 1 insertion(+)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ cat readme.txt
+Git is a distributed version control system.
+Git is free software distributed under the GPL.
+Git has a mutable index called stage.
+Git tracks changes of files.
+Creating a new branch is quick.
+Creating a new branch is quick & simple.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git merge feature1
+Auto-merging readme.txt
+CONFLICT (content): Merge conflict in readme.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master|MERGING)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+        both modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master|MERGING)
+$ cat readme.txt
+Git is a distributed version control system.
+Git is free software distributed under the GPL.
+Git has a mutable index called stage.
+Git tracks changes of files.
+Creating a new branch is quick.
+<<<<<<< HEAD
+Creating a new branch is quick & simple.
+=======
+Creating a new branch is quick AND simple.
+>>>>>>> feature1
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master|MERGING)
+$ git add readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master|MERGING)
+$ git commit -m "conflict fixed"
+[master d164f39] conflict fixed
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git log --graph --pretty=oneline --abbrev-commit
+*   d164f39 conflict fixed
+|\
+| * 55c473d AND simple
+* | f55615a & simple
+|/
+* 107c544 branch test
+* 81fa19a add test.txt
+* 0bb9eb8 git tracks changes
+* dbdd52c git tracks changes
+* b4a2026 understand how stage works
+* 2b69123 append GPL
+* 0ccfa0c add distributed
+* 5b807d1 wrote a readme file
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git branch
+  feature1
+* master
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git push origin master
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 520 bytes | 0 bytes/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
+To github.com:sky2046/learngit.git
+   107c544..d164f39  master -> master
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git branch -d feature1
+Deleted branch feature1 (was 55c473d).
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git push origin master
+Everything up-to-date
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git granch
+git: 'granch' is not a git command. See 'git --help'.
+
+Did you mean this?
+        branch
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git branch feature2
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ ls
+learn-note.txt  LICENSE  readme.txt  test.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git branch -d feature2
+Deleted branch feature2 (was d164f39).
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git checkout -b dev
+Switched to a new branch 'dev'
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (dev)
+$ git add readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (dev)
+$ git commit -m "add merge"
+[dev 8b4d7c3] add merge
+ 1 file changed, 1 insertion(+)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (dev)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git merge --no--ff -m "merge with no-ff" dev
+error: unknown option `no--ff'
+usage: git merge [<options>] [<commit>...]
+   or: git merge [<options>] <msg> HEAD <commit>
+   or: git merge --abort
+
+    -n                    do not show a diffstat at the end of the merge
+    --stat                show a diffstat at the end of the merge
+    --summary             (synonym to --stat)
+    --log[=<n>]           add (at most <n>) entries from shortlog to merge commit message
+    --squash              create a single commit instead of doing a merge
+    --commit              perform a commit if the merge succeeds (default)
+    -e, --edit            edit message before committing
+    --ff                  allow fast-forward (default)
+    --ff-only             abort if fast-forward is not possible
+    --rerere-autoupdate   update the index with reused conflict resolution if possible
+    --verify-signatures   verify that the named commit has a valid GPG signature
+    -s, --strategy <strategy>
+                          merge strategy to use
+    -X, --strategy-option <option=value>
+                          option for selected merge strategy
+    -m, --message <message>
+                          merge commit message (for a non-fast-forward merge)
+    -v, --verbose         be more verbose
+    -q, --quiet           be more quiet
+    --abort               abort the current in-progress merge
+    --allow-unrelated-histories
+                          allow merging unrelated histories
+    --progress            force progress reporting
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+    --overwrite-ignore    update ignored files (default)
+
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git merge --no--ff -m "merge with no-ff" dev
+error: unknown option `no--ff'
+usage: git merge [<options>] [<commit>...]
+   or: git merge [<options>] <msg> HEAD <commit>
+   or: git merge --abort
+
+    -n                    do not show a diffstat at the end of the merge
+    --stat                show a diffstat at the end of the merge
+    --summary             (synonym to --stat)
+    --log[=<n>]           add (at most <n>) entries from shortlog to merge commit message
+    --squash              create a single commit instead of doing a merge
+    --commit              perform a commit if the merge succeeds (default)
+    -e, --edit            edit message before committing
+    --ff                  allow fast-forward (default)
+    --ff-only             abort if fast-forward is not possible
+    --rerere-autoupdate   update the index with reused conflict resolution if possible
+    --verify-signatures   verify that the named commit has a valid GPG signature
+    -s, --strategy <strategy>
+                          merge strategy to use
+    -X, --strategy-option <option=value>
+                          option for selected merge strategy
+    -m, --message <message>
+                          merge commit message (for a non-fast-forward merge)
+    -v, --verbose         be more verbose
+    -q, --quiet           be more quiet
+    --abort               abort the current in-progress merge
+    --allow-unrelated-histories
+                          allow merging unrelated histories
+    --progress            force progress reporting
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+    --overwrite-ignore    update ignored files (default)
+
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git merge --no-ff -m "merge with no-ff" dev
+Merge made by the 'recursive' strategy.
+ readme.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git log --graph --pretty=oneline --abbrev-commit
+*   2d56a15 merge with no-ff
+|\
+| * 8b4d7c3 add merge
+|/
+*   d164f39 conflict fixed
+|\
+| * 55c473d AND simple
+* | f55615a & simple
+|/
+* 107c544 branch test
+* 81fa19a add test.txt
+* 0bb9eb8 git tracks changes
+* dbdd52c git tracks changes
+* b4a2026 understand how stage works
+* 2b69123 append GPL
+* 0ccfa0c add distributed
+* 5b807d1 wrote a readme file
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git push origin master
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 423 bytes | 0 bytes/s, done.
+Total 4 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local objects.
+To github.com:sky2046/learngit.git
+   d164f39..2d56a15  master -> master
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git checkout dev
+Switched to branch 'dev'
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (dev)
+$ git status
+On branch dev
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (dev)
+$ ls
+learn-note.txt  LICENSE  readme.txt  test.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (dev)
+$ git stash list
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (dev)
+$ git stash
+No local changes to save
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (dev)
+$ git status
+On branch dev
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (dev)
+$ git branch master
+fatal: A branch named 'master' already exists.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (dev)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git stash
+Saved working directory and index state WIP on master: 2d56a15 merge with no-ff
+HEAD is now at 2d56a15 merge with no-ff
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git stash list
+stash@{0}: WIP on master: 2d56a15 merge with no-ff
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git checkout -b issue-101
+Switched to a new branch 'issue-101'
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (issue-101)
+$ git add readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (issue-101)
+$ git commit -m "fix bug 101"
+[issue-101 83912a6] fix bug 101
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (issue-101)
+$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git merge --no-ff -m "merged bug fix 101" issue-101
+Merge made by the 'recursive' strategy.
+ readme.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git stash
+No local changes to save
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git stash list
+stash@{0}: WIP on master: 2d56a15 merge with no-ff
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git stash pop
+Auto-merging readme.txt
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (8223a7240ed98d3e985dc05e4072801f711c7815)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git commit -m "add stash"
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+Changes not staged for commit:
+        modified:   readme.txt
+
+Untracked files:
+        learn-note.txt
+
+no changes added to commit
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git add readme.txt
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git commit -m "add stash"
+[master dfc5b71] add stash
+ 1 file changed, 1 insertion(+)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 3 commits.
+  (use "git push" to publish your local commits)
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        learn-note.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git branch 0d issue-101
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git remote
+origin
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git remote -v
+origin  git@github.com:sky2046/learngit.git (fetch)
+origin  git@github.com:sky2046/learngit.git (push)
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git push origin master
+Counting objects: 7, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (7/7), 705 bytes | 0 bytes/s, done.
+Total 7 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 1 local objects.
+To github.com:sky2046/learngit.git
+   2d56a15..dfc5b71  master -> master
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git branch
+  0d
+  dev
+  issue-101
+* master
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git checkout master
+Already on 'master'
+Your branch is up-to-date with 'origin/master'.
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git tag v1.0
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git tag
+v1.0
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git log --pretty=oneline --abbrev-commit
+dfc5b71 add stash
+7b3f868 merged bug fix 101
+83912a6 fix bug 101
+2d56a15 merge with no-ff
+8b4d7c3 add merge
+d164f39 conflict fixed
+f55615a & simple
+55c473d AND simple
+107c544 branch test
+81fa19a add test.txt
+0bb9eb8 git tracks changes
+dbdd52c git tracks changes
+b4a2026 understand how stage works
+2b69123 append GPL
+0ccfa0c add distributed
+5b807d1 wrote a readme file
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git tag v0.9 8b4d7c3
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git tag
+v0.9
+v1.0
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git show v0.9
+commit 8b4d7c3c079b43c400c238e6c187ecbe63adb671
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Fri Feb 10 09:12:32 2017 +0800
+
+    add merge
+
+diff --git a/readme.txt b/readme.txt
+index 3e391f4..4cf9914 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -4,3 +4,4 @@ Git has a mutable index called stage.
+ Git tracks changes of files.
+ Creating a new branch is quick.
+ Creating a new branch is quick AND simple.
++add merge
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git tag -a v0.1 -m "version 0.1 released"
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git tag
+v0.1
+v0.9
+v1.0
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git show v0.1
+tag v0.1
+Tagger: liugenxian <liugenxian2015@gmail.com>
+Date:   Fri Feb 10 13:02:29 2017 +0800
+
+version 0.1 released
+
+commit dfc5b7147262ab331b795538cbf1b9500ff05c97
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Fri Feb 10 10:25:14 2017 +0800
+
+    add stash
+
+diff --git a/readme.txt b/readme.txt
+index 1f41bce..1d7ebf2 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -5,3 +5,4 @@ Git tracks changes of files.
+ Creating a new branch is quick.
+ Creating a new branch is quick AND simple.
+ add merge
++add stash
+\ No newline at end of file
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git log
+commit dfc5b7147262ab331b795538cbf1b9500ff05c97
+commit dfc5b7147262ab331b795538cbf1b9500ff05c97
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Fri Feb 10 10:25:14 2017 +0800
+
+    add stash
+
+commit 7b3f868669a4f4da3851a7aa948f64642cbb6452
+Merge: 2d56a15 83912a6
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Fri Feb 10 10:22:11 2017 +0800
+
+    merged bug fix 101
+
+commit 83912a6149c3224b1243a38d231297a583e892af
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Fri Feb 10 10:21:18 2017 +0800
+
+    fix bug 101
+
+commit 2d56a1525029e97ab408d3f039f2564cdac173d5
+Merge: d164f39 8b4d7c3
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Fri Feb 10 09:15:01 2017 +0800
+
+    merge with no-ff
+
+commit 8b4d7c3c079b43c400c238e6c187ecbe63adb671
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Fri Feb 10 09:12:32 2017 +0800
+
+    add merge
+
+commit d164f39330a96660b3c0ae23fa159df1fcdd934d
+Merge: f55615a 55c473d
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Fri Feb 10 08:53:53 2017 +0800
+
+    conflict fixed
+
+commit f55615af104d5c483db841a7ee7b1ca827280fa3
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Fri Feb 10 08:50:46 2017 +0800
+
+    & simple
+
+commit 55c473d78980f4d13dcb5637e6a12fde1991472d
+:
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git log -1
+commit dfc5b7147262ab331b795538cbf1b9500ff05c97
+Author: liugenxian <liugenxian2015@gmail.com>
+Date:   Fri Feb 10 10:25:14 2017 +0800
+
+    add stash
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git log -l
+fatal: Option 'l' requires a value
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git config --global alias.lg "log --color --graph --
+> pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)
+> %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git lg
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git lg
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git 1g
+git: '1g' is not a git command. See 'git --help'.
+
+Did you mean this?
+        lg
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git config --global alias.lg "log --color --graph --
+pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)
+%C(bold blue)<%an>%Creset' --aD^Crev-commit"
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
+$ git lg
+* dfc5b71 - (HEAD -> master, tag: v1.0, tag: v0.1, origin/master) add stash (3 hours ago)<liugenxian>
+*   7b3f868 - merged bug fix 101 (3 hours ago)<liugenxian>
+|\
+| * 83912a6 - (issue-101, 0d) fix bug 101 (3 hours ago)<liugenxian>
+|/
+*   2d56a15 - merge with no-ff (4 hours ago)<liugenxian>
+|\
+| * 8b4d7c3 - (tag: v0.9, dev) add merge (4 hours ago)<liugenxian>
+|/
+*   d164f39 - conflict fixed (5 hours ago)<liugenxian>
+|\
+| * 55c473d - (origin/feature1) AND simple (5 hours ago)<liugenxian>
+* | f55615a - & simple (5 hours ago)<liugenxian>
+|/
+* 107c544 - branch test (5 hours ago)<liugenxian>
+* 81fa19a - add test.txt (14 hours ago)<liugenxian>
+* 0bb9eb8 - git tracks changes (14 hours ago)<liugenxian>
+* dbdd52c - git tracks changes (14 hours ago)<liugenxian>
+* b4a2026 - understand how stage works (15 hours ago)<liugenxian>
+* 2b69123 - append GPL (15 hours ago)<liugenxian>
+* 0ccfa0c - add distributed (15 hours ago)<liugenxian>
+* 5b807d1 - wrote a readme file (16 hours ago)<liugenxian>
+
+Administrator@XIAONA-PC MINGW64 /d/myBooks/Git/learngit (master)
